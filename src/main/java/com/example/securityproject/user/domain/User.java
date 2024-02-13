@@ -22,9 +22,9 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
-    private String authority;
+    private UserRole authority;
 
-    public User(String username, String password, String authority) {
+    public User(String username, String password, UserRole authority) {
         this.username = username;
         this.password = password;
         this.authority = authority;
