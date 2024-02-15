@@ -27,7 +27,7 @@ public class SignUpController {
 
 
     @PostMapping
-    public String login(@ModelAttribute UserRegisterDto userRegisterDto) {
+    public String signup(@ModelAttribute UserRegisterDto userRegisterDto) {
         userService.signUp(
                 userRegisterDto.getUsername(),
                 userRegisterDto.getPassword(),
