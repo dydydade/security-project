@@ -24,7 +24,7 @@ public class UserService {
         if (userRepository.findByUsername(username) != null) {
             throw new AlreadyRegisteredUserException();
         }
-        return userRepository.save(new User(username, password, authority));
+        return userRepository.save(new User(username, passwordEncoder.encode(password), authority));
     }
 
     public User findByUsername(String username) {
