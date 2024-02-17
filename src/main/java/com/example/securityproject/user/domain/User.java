@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 @Table
@@ -22,9 +23,9 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
-    private String authority;
+    private UserRole authority;
 
-    public User(String username, String password, String authority) {
+    public User(String username, String password, UserRole authority) {
         this.username = username;
         this.password = password;
         this.authority = authority;
@@ -32,7 +33,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.singleton((GrantedAuthority) () -> String.valueOf(authority));
     }
 
     @Override

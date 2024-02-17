@@ -1,5 +1,6 @@
 package com.example.securityproject.user.controller;
 
+import com.example.securityproject.user.domain.UserRole;
 import com.example.securityproject.user.dto.UserRegisterDto;
 import com.example.securityproject.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -26,10 +27,11 @@ public class SignUpController {
 
 
     @PostMapping
-    public String login(@ModelAttribute UserRegisterDto userRegisterDto) {
+    public String signup(@ModelAttribute UserRegisterDto userRegisterDto) {
         userService.signUp(
                 userRegisterDto.getUsername(),
-                userRegisterDto.getPassword()
+                userRegisterDto.getPassword(),
+                UserRole.ROLE_USER
         );
         return "redirect:login";
     }
