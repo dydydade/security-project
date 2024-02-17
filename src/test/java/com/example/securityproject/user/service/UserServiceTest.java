@@ -1,7 +1,6 @@
 package com.example.securityproject.user.service;
 
 import com.example.securityproject.user.domain.User;
-import com.example.securityproject.user.domain.UserRole;
 import com.example.securityproject.user.exception.AlreadyRegisteredUserException;
 import com.example.securityproject.user.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +30,7 @@ class UserServiceTest {
         // given
         String username = "user";
         String password = "user";
-        UserRole authority = UserRole.ROLE_USER;
+        String authority = "ROLE_USER";
         User existingUser = new User(username, password, authority);
 
         when(userRepository.findByUsername(username)).thenReturn(existingUser);
@@ -49,7 +48,7 @@ class UserServiceTest {
         // given
         String username = "user";
         String password = "user";
-        UserRole authority = UserRole.ROLE_USER;
+        String authority = "ROLE_USER";
         User newUser = new User(username, password, authority);
 
         when(userRepository.findByUsername(username)).thenReturn(null);
@@ -65,7 +64,7 @@ class UserServiceTest {
         // given
         String username = "user";
         String password = "user";
-        UserRole authority = UserRole.ROLE_USER;
+        String authority = "ROLE_USER";
         User existingUser = new User(username, password, authority);
 
         when(userRepository.findByUsername(username)).thenReturn(existingUser);

@@ -1,9 +1,6 @@
 package com.example.securityproject.user.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,18 +11,18 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Entity
-@Table
+@Table(name = "`user`")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User implements UserDetails {
 
-    @GeneratedValue @Id
+    @Id @GeneratedValue
     private Long id;
     private String username;
     private String password;
-    private UserRole authority;
+    private String authority;
 
-    public User(String username, String password, UserRole authority) {
+    public User(String username, String password, String authority) {
         this.username = username;
         this.password = password;
         this.authority = authority;
@@ -37,33 +34,32 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
     public String getUsername() {
         return null;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
+    }
+
+    public Boolean isAdmin() {
+        return authority.equals("ROLE_ADMIN");
     }
 }
 
