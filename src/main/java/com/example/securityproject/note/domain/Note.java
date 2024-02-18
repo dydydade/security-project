@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import com.example.securityproject.user.domain.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Entity
 @Table
 @Getter
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = PROTECTED)
 public class Note {
 
@@ -34,6 +36,7 @@ public class Note {
 
     // 생성일자
     @CreatedDate
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
     // 수정일자
