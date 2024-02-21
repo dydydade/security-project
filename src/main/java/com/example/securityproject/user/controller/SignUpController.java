@@ -1,6 +1,5 @@
 package com.example.securityproject.user.controller;
 
-import com.example.securityproject.user.domain.UserRole;
 import com.example.securityproject.user.dto.UserRegisterDto;
 import com.example.securityproject.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +30,7 @@ public class SignUpController {
         userService.signUp(
                 userRegisterDto.getUsername(),
                 userRegisterDto.getPassword(),
-                UserRole.ROLE_USER
+                "ROLE_USER"
         );
         return "redirect:login";
     }
