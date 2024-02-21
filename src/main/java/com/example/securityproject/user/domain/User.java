@@ -1,9 +1,7 @@
 package com.example.securityproject.user.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,7 +11,9 @@ import java.util.Collections;
 @Entity
 @Table(name = "`user`")
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id @GeneratedValue
