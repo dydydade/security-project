@@ -1,0 +1,47 @@
+# data source settings
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/study
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  # JPA settings
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  # overloaded post settings
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+# logging level settings
+logging:
+  level:
+    root: INFO
+    sql: ERROR
+
+# session timeout settings
+session:
+  servlet:
+    session:
+      timeout: 10m
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mariadb://host.docker.internal:3306/springboot
+    username: flature
+    password: aroundhub12#
+    driver-class-name: org.mariadb.jdbc.Driver
