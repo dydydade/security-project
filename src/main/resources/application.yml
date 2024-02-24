@@ -41,7 +41,7 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:mariadb://host.docker.internal:3306/springboot
+    url: jdbc:mariadb://host.docker.internal:3308/springboot
     username: flature
     password: aroundhub12#
     driver-class-name: org.mariadb.jdbc.Driver
