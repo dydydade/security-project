@@ -23,7 +23,7 @@ import static lombok.AccessLevel.PROTECTED;
 @AllArgsConstructor
 public class Note {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // 제목
