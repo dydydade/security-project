@@ -14,7 +14,7 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div th:each="note : ${notes}">
         <p style="margin: 10px 0px;">
-          <strong th:text="${note.title}"></strong>
+          <strong th:text="${note.subject}"></strong>
           Posted by
           <strong th:if="${note.user}" th:text="${note.user.username}"></strong> on
           <strong th:text="${#temporals.format(note.createdAt, 'yyyy-MM-dd')}"></strong>
