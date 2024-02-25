@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -23,6 +24,9 @@ class UserServiceTest {
 
     @Mock
     UserRepository userRepository;
+
+    @Mock
+    PasswordEncoder passwordEncoder;
 
     @Test
     @DisplayName("기존에 동일한 ID를 가진 사용자가 있을 경우 예외가 반환된다.")
@@ -53,6 +57,8 @@ class UserServiceTest {
 
         when(userRepository.findByUsername(username)).thenReturn(null);
         when(userRepository.save(any())).thenReturn(newUser);
+
+        when(passwordEncoder.encode(any())).thenReturn("encodedPasswordFake");
 
         assertThat(userService.signUp(username, password, authority))
                 .isEqualTo(newUser);
