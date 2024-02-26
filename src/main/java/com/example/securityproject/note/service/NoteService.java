@@ -1,10 +1,13 @@
 package com.example.securityproject.note.service;
 
 import com.example.securityproject.note.domain.Note;
+import com.example.securityproject.note.dto.NoteResponseDto;
 import com.example.securityproject.note.repository.NoteRepository;
 import com.example.securityproject.user.domain.User;
 import com.example.securityproject.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +37,18 @@ public class NoteService {
             return noteRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         }
         return noteRepository.findByUserOrderByIdDesc(user);
+    }
+
+    @Transactional(readOnly = true)
+    public Slice<NoteResponseDto> findByUser(User user, int page, int size) {
+        if (user == null) {
+            throw new UserNotFoundException();
+        }
+        if (user.isAdmin())
+            return noteRepository.findAll(PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "updatedAt")))
+                    .map(note -> new NoteResponseDto(note));
+        return noteRepository.findByUser(user, PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "updatedAt")))
+                .map(note -> new NoteResponseDto(note));
     }
 
     /**
