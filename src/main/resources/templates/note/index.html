@@ -14,6 +14,8 @@
 <!-- 개인 user만 접근할 수 있는 페이지 -->
 <div class="container">
   <h1>개인노트</h1>
+  <h3>노트는 최근 수정일자를 기준으로 3개만 조회되며,</h3>
+  <h3>더보기 버튼을 클릭하시면 이전 노트들을 3개씩 불러옵니다.</h3>
 
   <!-- 노트 작성 Modal Button -->
   <button
@@ -70,24 +72,87 @@
   <!-- 노트 내용 조회 -->
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <!-- 노트 개수만큼 반복 -->
-      <div class="border border-dark" th:each="note : ${notes}">
-        <h2 th:text="${note.subject}"></h2>
-        <div>
-          <p th:text="${note.content}" style="white-space: pre-wrap;"></p>
-          <form th:action="@{/note}" th:method="delete">
-            <input type="hidden" name="id" th:value="${note.id}">
-            <!-- 노트 삭제 버튼 -->
-            <button type="submit" class="btn btn-secondary">삭제</button>
-            <!-- 작성일자 표시 -->
-            <span style="margin: 10px 0px;">Posted On
-              <strong th:text="${#temporals.format(note.createdAt, 'yyyy-MM-dd')}"></strong>
-            </span>
-          </form>
-        </div>
+
+      <div id="notes">
+        <!-- 초기 노트 목록이 여기에 로드됩니다. -->
       </div>
+      <button id="loadMore">더보기</button>
     </div>
   </div>
 </div>
+
+<script th:inline="javascript">
+/*<![CDATA[*/
+var page = 0;
+var size = 3;
+
+$(document).ready(function() {
+    loadNotes();
+
+    $("#loadMore").click(function() {
+        page++;
+        loadNotes();
+    });
+});
+
+function loadNotes() {
+    $.ajax({
+        url: '/notes',
+        type: 'GET',
+        data: {
+            page: page,
+            size: size
+        },
+        success: function(response) {
+            response.notes.forEach(function(note) {
+                var formattedDate = new Date(note.createdAt).toLocaleDateString("ko-KR");
+                $('#notes').append(
+                    '<div class="border border-dark note">' +
+                    '<h2>' + note.subject + '</h2>' +
+                    '<div>' +
+                    '<p style="white-space: pre-wrap;">' + note.content + '</p>' +
+                    '<input type="hidden" name="id" value="' + note.id + '">' +
+                    '<button class="btn btn-secondary delete-note" data-note-id="' + note.id + '">삭제</button>' +
+                    '<span style="margin: 10px 0px;">Posted On ' +
+                    '<strong>' + formattedDate + '</strong>' +
+                    '</span>' +
+                    '</div>' +
+                    '</div>'
+                );
+            });
+
+            // 삭제 버튼에 이벤트 리스너 추가
+            $('.delete-note').off('click').on('click', function() {
+                var noteId = $(this).data('note-id');
+                deleteNote(noteId);
+            });
+
+            if (!response.hasNext) {
+                $('#loadMore').hide();
+            } else {
+                $('#loadMore').show();
+            }
+        }
+    });
+}
+
+function deleteNote(noteId) {
+    $.ajax({
+        url: '/note/' + noteId, // 삭제를 위한 서버의 URL
+        type: 'DELETE', // HTTP DELETE 메소드 사용
+    }).done(function() {
+        // 삭제가 성공적으로 완료되면 해당 노트 요소를 DOM에서 제거
+        $('.note').remove();
+        console.log(page);
+        if (page != 0) page=0;
+        loadNotes();
+    }).fail(function() {
+        alert('노트 삭제에 실패했습니다.');
+    });
+}
+/*]]>*/
+</script>
+
 </body>
 </html>
+
