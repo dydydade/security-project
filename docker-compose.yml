@@ -21,7 +21,7 @@ services:
             - "6380:6379"
             
     security_pjt:
-        image: dydydade/security-pjt:1.0.0
+        image: dydydade/security-pjt:1.0.2
         restart: always
         depends_on:
             - aroundhub_db
