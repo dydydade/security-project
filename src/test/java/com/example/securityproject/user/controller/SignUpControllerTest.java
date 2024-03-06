@@ -38,7 +38,6 @@ class SignUpControllerTest {
                 .andExpect(view().name("signup"));
     }
 
-
     @Test
     @DisplayName("유저가 ID와 PW를 입력하고 회원가입하면 로그인 페이지로 리다이렉트된다.")
     public void postSignupTest() throws Exception {
