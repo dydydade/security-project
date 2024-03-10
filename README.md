@@ -2,11 +2,11 @@
 
 
 ### 본 과제는 AWS EC2 서버를 통해 구동 중입니다.
-![img_24.png](img_24.png)
+![img_24.png](src/docs/img_24.png)
 
 ### 접속 URL : http://3.24.136.158:8080/
 
-![img_25.png](img_25.png)
+![img_25.png](src/docs/img_25.png)
 
 ### 프로젝트는 Docker를 활용하여 이미지로 빌드하였으며, dockerhub를 통해 이미지를 다운받으실 수 있습니다.
 
@@ -62,66 +62,66 @@ services:
 
 ---
 ### 1) 회원가입
-![img_1.png](img_1.png)
+![img_1.png](src/docs/img_1.png)
 
 ▼
 
-<img alt="img_2.png" height="200" src="img_2.png" width="300"/>
+<img alt="img_2.png" height="200" src="src/docs/img_2.png" width="300"/>
 
 (가입 시 자동으로 USER 권한 부여)
 
 ---
 
 ### 2) 로그인(USER)
-![img_10.png](img_10.png)
+![img_10.png](src/docs/img_10.png)
 
 ▼
 
 USER 권한을 가진 계정으로 로그인하면, [공지사항], [개인노트], [로그아웃] 버튼이 나타납니다.
 
-![img_11.png](img_11.png)
+![img_11.png](src/docs/img_11.png)
 
 ---
 
 ### 3) 개인노트(USER)
-![img_12.png](img_12.png)
+![img_12.png](src/docs/img_12.png)
 
 (새 글 쓰기 버튼을 클릭하면 모달 창이 나타납니다.)
 
-<img alt="img_14.png" height="500" src="img_14.png"/>
+<img alt="img_14.png" height="500" src="src/docs/img_14.png"/>
 
 저장 버튼 클릭 시 아래와 같이 노트가 저장되고, 
 
 저장된 노트는 최근 수정일자를 기준으로 3개씩 조회됩니다.(Pagination 활용)
 
-![img_15.png](img_15.png)
+![img_15.png](src/docs/img_15.png)
 
 ---
 
 ### 4) 공지사항 조회(USER)
-![img_17.png](img_17.png)
+![img_17.png](src/docs/img_17.png)
 
 ---
 
 ### 5) 로그아웃
 로그아웃 버튼 클릭 시, 초기 홈 화면으로 이동합니다.
 
-![img_18.png](img_18.png)
+![img_18.png](src/docs/img_18.png)
 
 ▼
 
-![img_19.png](img_19.png)
+![img_19.png](src/docs/img_19.png)
 
 ---
 
 ### 6) 로그인(ADMIN)
-![img_20.png](img_20.png)
+![img_20.png](src/docs/img_20.png)
 
 ▼
 
 ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공지사항], [로그아웃] 버튼이 나타납니다.
 
-![img_21.png](img_21.png)
+![img_21.png](src/docs/img_21.png)
 
 ---
 
@@ -129,7 +129,7 @@ ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공
 
 관리자(ADMIN)는 사용자가 등록한 모든 노트를 조회할 수 있습니다.
 
-![img_23.png](img_23.png)
+![img_23.png](src/docs/img_23.png)
 
 ---
 
@@ -137,19 +137,19 @@ ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공
 
 관리자(ADMIN)는 새로운 공지사항을 추가하거나 삭제할 수 있습니다.
 
-![img_26.png](img_26.png)
+![img_26.png](src/docs/img_26.png)
 
 [새 글 쓰기] 버튼을 클릭하면, 모달 창이 나타납니다.
 
-![img_27.png](img_27.png)
+![img_27.png](src/docs/img_27.png)
 
 [저장] 버튼 클릭 시, 공지사항이 저장됩니다.
 
-![img_28.png](img_28.png)
+![img_28.png](src/docs/img_28.png)
 
 저장된 공지사항은 사용자 계정으로도 조회가 가능합니다.
 
-![img_30.png](img_30.png)
+![img_30.png](src/docs/img_30.png)
 
 
 
@@ -357,7 +357,7 @@ public class SpringSecurityConfig {
 <summary>코드 보기</summary>
 
 <!-- summary 아래 한칸 공백 두어야함 -->
-![img_8.png](img_8.png)
+![img_8.png](src/docs/img_8.png)
 
 </details>
 
@@ -366,11 +366,11 @@ public class SpringSecurityConfig {
 <summary>코드 보기</summary>
 
 <!-- summary 아래 한칸 공백 두어야함 -->
-![img_7.png](img_7.png)
+![img_7.png](src/docs/img_7.png)
 
 
 #### PasswordEncoder 빈 등록 코드
-![img_9.png](img_9.png)
+![img_9.png](src/docs/img_9.png)
 
 </details>
 
@@ -476,7 +476,7 @@ http
 
 <!-- summary 아래 한칸 공백 두어야함 -->
 - NoteRestController 를 따로 만든 이유 : Pagination 활용한 [더보기] 버튼을 만들기 위해, js로 AJAX 요청을 수행하도록 작성
-![img_31.png](img_31.png)
+![img_31.png](src/docs/img_31.png)
 - getNotePageData() : Note 페이지의 Note 목록 조회
 - deleteNote() : Note 삭제
 ```java
