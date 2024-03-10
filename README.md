@@ -1,23 +1,31 @@
-# Spring Security 기반 간단 인증/인가 기능 개발 과제입니다. 
+# Spring Security 기반 인증/인가 기능 개발 과제입니다. 
 
+<br/>
 
 ### 본 과제는 AWS EC2 서버를 통해 구동 중입니다.
 
 <img alt="img_24.png" src="src/docs/img_24.png" style="border: 1px solid #000;"/>
 
+<br/>
+
 ### 접속 URL : http://3.24.136.158:8080/
 
 <img alt="img_25.png" height="70" src="src/docs/img_25.png" style="border: 1px solid #000;"/>
 
+<br/>
+
 ---
 
-### 프로젝트는 Docker를 활용하여 이미지로 빌드하였으며, dockerhub를 통해 이미지를 다운받으실 수 있습니다.
+### 프로젝트는 Docker를 활용하여 이미지로 빌드하였습니다.
+dockerhub를 통해 이미지를 다운받으실 수 있습니다.
 
 ```
 docker pull dydydade/security-pjt:1.0.2
 ```
 
-### 단, mariadb, redis 이미지에 의존하고 있어서 docker-compose.yml 파일을 통해 구동하셔야 합니다.
+<br/>
+
+### 단, mariadb,redis 이미지에 의존하고 있어 docker-compose 파일을 통해 구동하셔야 합니다.
 
 ```
 services:
@@ -51,6 +59,7 @@ services:
         ports:
             - "8080:8080"
 ```
+<br/>
 
 ---
 
@@ -59,14 +68,21 @@ services:
 
 ### HTML 소스는 fastcampus 강의 예제 코드를 활용하였습니다.
 
+<br/>
+
 ---
 
 # 1. 기능 소개
 
+<br/>
+
 ### 권한 구분
 사용자 계정 권한은 USER 와 ADMIN 으로 구분되며, 아래 회원 가입을 통해 가입 시 USER 권한이 부여됩니다.
 
+<br/>
+
 ---
+
 ### 1) 회원가입
 
 <img alt="img_1.png" height="100" src="src/docs/img_1.png" style="border: 1px solid #000;"/>
@@ -76,6 +92,8 @@ services:
 <img alt="img_2.png" height="200" src="src/docs/img_2.png" width="300" style="border: 1px solid #000;"/>
 
 (가입 시 자동으로 USER 권한 부여)
+
+<br/>
 
 ---
 
@@ -87,6 +105,8 @@ services:
 USER 권한을 가진 계정으로 로그인하면, [공지사항], [개인노트], [로그아웃] 버튼이 나타납니다.
 
 <img alt="img_11.png" height="100" src="src/docs/img_11.png" style="border: 1px solid #000;"/>
+
+<br/>
 
 ---
 
@@ -104,11 +124,15 @@ USER 권한을 가진 계정으로 로그인하면, [공지사항], [개인노�
 
 <img alt="img_15.png" src="src/docs/img_15.png" style="border: 1px solid #000;"/>
 
+<br/>
+
 ---
 
 ### 4) 공지사항 조회(USER)
 
 <img alt="img_17.png" src="src/docs/img_17.png"/>
+
+<br/>
 
 ---
 
@@ -120,6 +144,8 @@ USER 권한을 가진 계정으로 로그인하면, [공지사항], [개인노�
 ▼
 
 <img alt="img_19.png" height="100" src="src/docs/img_19.png" style="border: 1px solid #000;"/>
+
+<br/>
 
 ---
 
@@ -133,6 +159,8 @@ ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공
 
 <img alt="img_21.png" height="100" src="src/docs/img_21.png" style="border: 1px solid #000;"/>
 
+<br/>
+
 ---
 
 ### 7) 관리자 페이지(ADMIN)
@@ -140,6 +168,8 @@ ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공
 관리자(ADMIN)는 사용자가 등록한 모든 노트를 조회할 수 있습니다.
 
 <img alt="img_23.png" src="src/docs/img_23.png" style="border: 1px solid #000;"/>
+
+<br/>
 
 ---
 
@@ -238,7 +268,10 @@ public class SpringSecurityConfig {
 
 </details>
 
+<br/>
+
 ---
+
 ▼ 한 부분씩 나눠서 보기
 
 ---
@@ -268,6 +301,8 @@ public class SpringSecurityConfig {
     }
 }
 ```
+
+<br/>
 
 ---
 
@@ -317,6 +352,9 @@ public class SpringSecurityConfig {
     // .....
 }
 ```
+
+<br/>
+
 ---
 
 - 정적 리소스(.css, .img 등)는 spring security 대상에서 제외
@@ -357,6 +395,7 @@ public class SpringSecurityConfig {
 }
 ```
 
+<br/>
 
 ---
 
@@ -382,6 +421,8 @@ public class SpringSecurityConfig {
 ![img_9.png](src/docs/img_9.png)
 
 </details>
+
+<br/>
 
 ---
 
@@ -425,6 +466,8 @@ public class MvcConfig implements WebMvcConfigurer {
     )
 ```
 </details>
+
+<br/>
 
 ---
 
@@ -593,6 +636,8 @@ public class NoteService {
 ```
 </details>
 
+<br/>
+
 ---
 
 ### 4) 공지사항 조회(USER)
@@ -646,6 +691,8 @@ public class NoticeService {
 ```
 </details>
 
+<br/>
+
 ---
 
 ### 5) 로그아웃
@@ -683,10 +730,15 @@ public class SpringSecurityConfig {
 ```
 </details>
 
+<br/>
+
 ---
 
 ### 6) 로그인(ADMIN)
 - 로그인(USER) 코드와 동일(생략)
+
+<br/>
+
 ---
 
 ### 7) 관리자 페이지(ADMIN)
@@ -719,6 +771,8 @@ public class AdminController {
 }
 ```
 </details>
+
+<br/>
 
 ---
 
@@ -800,6 +854,7 @@ public class NoticeService {
 ```
 </details>
 
+<br/>
 
 ---
 
@@ -849,6 +904,8 @@ class SignUpControllerTest {
     }
 }
 ```
+
+<br/>
 
 ---
 
