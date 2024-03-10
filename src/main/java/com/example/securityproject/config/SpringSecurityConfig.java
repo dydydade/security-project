@@ -86,8 +86,7 @@ public class SpringSecurityConfig {
     }
 
     /**
-     * UserDetailsService 구현
-     *
+     * DaoAuthenticationProvider 가 사용할 UserDetailsService 구현
      * @return UserDetailsService
      */
     @Bean
