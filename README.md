@@ -16,6 +16,8 @@
 
 ---
 
+<br/>
+
 ### 프로젝트는 Docker를 활용하여 이미지로 빌드하였습니다.
 dockerhub를 통해 이미지를 다운받으실 수 있습니다.
 
@@ -63,6 +65,8 @@ services:
 
 ---
 
+<br/>
+
 ### View Engine 으로는 타임리프(Thymeleaf)를 사용하였습니다.
 그러나 View 코드는 과제에서 핵심적인 내용이 아니기 때문에, 문서에서는 설명을 생략하겠습니다.
 
@@ -71,6 +75,8 @@ services:
 <br/>
 
 ---
+
+<br/>
 
 # 1. 기능 소개
 
@@ -82,6 +88,8 @@ services:
 <br/>
 
 ---
+
+<br/>
 
 ### 1) 회원가입
 
@@ -97,6 +105,8 @@ services:
 
 ---
 
+<br/>
+
 ### 2) 로그인(USER)
 ![img_10.png](src/docs/img_10.png)
 
@@ -109,6 +119,8 @@ USER 권한을 가진 계정으로 로그인하면, [공지사항], [개인노�
 <br/>
 
 ---
+
+<br/>
 
 ### 3) 개인노트(USER)
 
@@ -128,6 +140,8 @@ USER 권한을 가진 계정으로 로그인하면, [공지사항], [개인노�
 
 ---
 
+<br/>
+
 ### 4) 공지사항 조회(USER)
 
 <img alt="img_17.png" src="src/docs/img_17.png"/>
@@ -135,6 +149,8 @@ USER 권한을 가진 계정으로 로그인하면, [공지사항], [개인노�
 <br/>
 
 ---
+
+<br/>
 
 ### 5) 로그아웃
 로그아웃 버튼 클릭 시, 초기 홈 화면으로 이동합니다.
@@ -148,6 +164,8 @@ USER 권한을 가진 계정으로 로그인하면, [공지사항], [개인노�
 <br/>
 
 ---
+
+<br/>
 
 ### 6) 로그인(ADMIN)
 
@@ -163,6 +181,8 @@ ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공
 
 ---
 
+<br/>
+
 ### 7) 관리자 페이지(ADMIN)
 
 관리자(ADMIN)는 사용자가 등록한 모든 노트를 조회할 수 있습니다.
@@ -172,6 +192,8 @@ ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공
 <br/>
 
 ---
+
+<br/>
 
 ### 8) 공지사항 등록/삭제(ADMIN)
 
@@ -191,11 +213,16 @@ ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공
 
 ![img_30.png](src/docs/img_30.png)
 
+<br/>
 
+---
 
+<br/>
 
 
 # 2. 구현 코드
+
+<br/>
 
 ### 0) Spring Security Config
 <details>
@@ -272,6 +299,7 @@ public class SpringSecurityConfig {
 
 ---
 
+
 ▼ 한 부분씩 나눠서 보기
 
 ---
@@ -305,6 +333,8 @@ public class SpringSecurityConfig {
 <br/>
 
 ---
+
+<br/>
 
 - 경로 별 권한 설정
 - "/", "/home", "/signup" 경로로의 요청은 모두 허용
@@ -357,6 +387,8 @@ public class SpringSecurityConfig {
 
 ---
 
+<br/>
+
 - 정적 리소스(.css, .img 등)는 spring security 대상에서 제외
 - permitAll() 설정과 비슷하지만, 아예 Spring Security Filter가 실행되지 않아 오버헤드가 없음
 - DaoAuthenticationProvider가 사용할 UserDetailsService 구현
@@ -399,6 +431,8 @@ public class SpringSecurityConfig {
 
 ---
 
+<br/>
+
 ### 1) 회원가입
 ### SignUpController 코드
 <details>
@@ -425,6 +459,8 @@ public class SpringSecurityConfig {
 <br/>
 
 ---
+
+<br/>
 
 ### 2) 로그인(USER)
 ### MvcConfig 코드
@@ -470,6 +506,8 @@ public class MvcConfig implements WebMvcConfigurer {
 <br/>
 
 ---
+
+<br/>
 
 ### 3) 개인노트(USER)
 ### NoteController 코드
@@ -640,6 +678,8 @@ public class NoteService {
 
 ---
 
+<br/>
+
 ### 4) 공지사항 조회(USER)
 
 ### NoticeController 코드
@@ -695,6 +735,8 @@ public class NoticeService {
 
 ---
 
+<br/>
+
 ### 5) 로그아웃
 
 ### SpringSecurityConfig 코드
@@ -734,12 +776,16 @@ public class SpringSecurityConfig {
 
 ---
 
+<br/>
+
 ### 6) 로그인(ADMIN)
 - 로그인(USER) 코드와 동일(생략)
 
 <br/>
 
 ---
+
+<br/>
 
 ### 7) 관리자 페이지(ADMIN)
 
@@ -775,6 +821,8 @@ public class AdminController {
 <br/>
 
 ---
+
+<br/>
 
 ### 8) 공지사항 등록/삭제(ADMIN)
 
@@ -858,6 +906,8 @@ public class NoticeService {
 
 ---
 
+<br/>
+
 
 # 2. 테스트 코드(일부)
 
@@ -908,6 +958,8 @@ class SignUpControllerTest {
 <br/>
 
 ---
+
+<br/>
 
 ### 2) UserService Test 코드
 
