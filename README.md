@@ -2,11 +2,14 @@
 
 
 ### 본 과제는 AWS EC2 서버를 통해 구동 중입니다.
-![img_24.png](src/docs/img_24.png)
+
+<img alt="img_24.png" src="src/docs/img_24.png" style="border: 1px solid #000;"/>
 
 ### 접속 URL : http://3.24.136.158:8080/
 
-![img_25.png](src/docs/img_25.png)
+<img alt="img_25.png" height="70" src="src/docs/img_25.png" style="border: 1px solid #000;"/>
+
+---
 
 ### 프로젝트는 Docker를 활용하여 이미지로 빌드하였으며, dockerhub를 통해 이미지를 다운받으실 수 있습니다.
 
@@ -48,6 +51,9 @@ services:
         ports:
             - "8080:8080"
 ```
+
+---
+
 ### View Engine 으로는 타임리프(Thymeleaf)를 사용하였습니다.
 그러나 View 코드는 과제에서 핵심적인 내용이 아니기 때문에, 문서에서는 설명을 생략하겠습니다.
 
@@ -62,11 +68,12 @@ services:
 
 ---
 ### 1) 회원가입
-![img_1.png](src/docs/img_1.png)
+
+<img alt="img_1.png" height="100" src="src/docs/img_1.png" style="border: 1px solid #000;"/>
 
 ▼
 
-<img alt="img_2.png" height="200" src="src/docs/img_2.png" width="300"/>
+<img alt="img_2.png" height="200" src="src/docs/img_2.png" width="300" style="border: 1px solid #000;"/>
 
 (가입 시 자동으로 USER 권한 부여)
 
@@ -79,49 +86,52 @@ services:
 
 USER 권한을 가진 계정으로 로그인하면, [공지사항], [개인노트], [로그아웃] 버튼이 나타납니다.
 
-![img_11.png](src/docs/img_11.png)
+<img alt="img_11.png" height="100" src="src/docs/img_11.png" style="border: 1px solid #000;"/>
 
 ---
 
 ### 3) 개인노트(USER)
-![img_12.png](src/docs/img_12.png)
+
+<img alt="img_12.png" src="src/docs/img_12.png" style="border: 1px solid #000;"/>
 
 (새 글 쓰기 버튼을 클릭하면 모달 창이 나타납니다.)
 
-<img alt="img_14.png" height="500" src="src/docs/img_14.png"/>
+<img alt="img_14.png" height="500" src="src/docs/img_14.png" style="border: 1px solid #000;"/>
 
 저장 버튼 클릭 시 아래와 같이 노트가 저장되고, 
 
 저장된 노트는 최근 수정일자를 기준으로 3개씩 조회됩니다.(Pagination 활용)
 
-![img_15.png](src/docs/img_15.png)
+<img alt="img_15.png" src="src/docs/img_15.png" style="border: 1px solid #000;"/>
 
 ---
 
 ### 4) 공지사항 조회(USER)
-![img_17.png](src/docs/img_17.png)
+
+<img alt="img_17.png" src="src/docs/img_17.png"/>
 
 ---
 
 ### 5) 로그아웃
 로그아웃 버튼 클릭 시, 초기 홈 화면으로 이동합니다.
 
-![img_18.png](src/docs/img_18.png)
+<img alt="img_18.png" height="100" src="src/docs/img_18.png" style="border: 1px solid #000;"/>
 
 ▼
 
-![img_19.png](src/docs/img_19.png)
+<img alt="img_19.png" height="100" src="src/docs/img_19.png" style="border: 1px solid #000;"/>
 
 ---
 
 ### 6) 로그인(ADMIN)
-![img_20.png](src/docs/img_20.png)
+
+<img alt="img_20.png" src="src/docs/img_20.png" style="border: 1px solid #000;"/>
 
 ▼
 
 ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공지사항], [로그아웃] 버튼이 나타납니다.
 
-![img_21.png](src/docs/img_21.png)
+<img alt="img_21.png" height="100" src="src/docs/img_21.png" style="border: 1px solid #000;"/>
 
 ---
 
@@ -129,7 +139,7 @@ ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공
 
 관리자(ADMIN)는 사용자가 등록한 모든 노트를 조회할 수 있습니다.
 
-![img_23.png](src/docs/img_23.png)
+<img alt="img_23.png" src="src/docs/img_23.png" style="border: 1px solid #000;"/>
 
 ---
 
@@ -141,7 +151,7 @@ ADMIN 권한을 가진 계정으로 로그인하면, [관리자 페이지], [공
 
 [새 글 쓰기] 버튼을 클릭하면, 모달 창이 나타납니다.
 
-![img_27.png](src/docs/img_27.png)
+<img alt="img_27.png" height="400" src="src/docs/img_27.png" style="border: 1px solid #000;"/>
 
 [저장] 버튼 클릭 시, 공지사항이 저장됩니다.
 
@@ -253,9 +263,8 @@ public class SpringSecurityConfig {
                 // CSRF 설정
                 .csrf(csrf -> {})
                 // Remember-me 설정
-                .rememberMe(rememberMe -> rememberMe.tokenValiditySeconds(86400))
-
-                // .....
+                .rememberMe(rememberMe -> rememberMe.tokenValiditySeconds(86400));
+                // .....e
     }
 }
 ```
