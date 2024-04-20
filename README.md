@@ -2,7 +2,8 @@
 
 <br/>
 
-### ~~~본 과제는 AWS EC2 서버를 통해 구동 중입니다. ~~~ ▶ 현재는 다른 사이드 프로젝트가 구동 중입니다. LINK: http://3.24.136.158:8080/swagger-ui/index.html
+### ~~~본 과제는 AWS EC2 서버를 통해 구동 중입니다. ~~~ 
+▶ 현재는 다른 사이드 프로젝트가 구동 중입니다. LINK: http://3.24.136.158:8080/swagger-ui/index.html
 
 <img alt="img_24.png" src="src/docs/img_24.png" style="border: 1px solid #000;"/>
 
